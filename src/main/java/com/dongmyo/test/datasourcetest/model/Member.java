@@ -1,31 +1,17 @@
 package com.dongmyo.test.datasourcetest.model;
 
-import com.dongmyo.test.datasourcetest.entity.MemberEntity;
-import lombok.AccessLevel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter(AccessLevel.PRIVATE)
+@Setter
 public class Member {
-    private Long id;
+    @JsonProperty("id")
+    private Long organizationMemberId;
 
     private String userCode;
 
     private String externalEmailAddress;
-
-
-    private Member() {
-        // nothing
-    }
-
-    public static Member of(MemberEntity entity) {
-        Member member = new Member();
-        member.setId(entity.getMemberId());
-        member.setUserCode(entity.getUserCode());
-        member.setExternalEmailAddress(entity.getExternalEmailAddress());
-
-        return member;
-    }
 
 }
